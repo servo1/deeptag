@@ -5,15 +5,15 @@ This is an attempt to create a similar system to Dot (https://github.com/olado/d
 
 The template format is similar but all functional tags such as conditionals and arrays are tagged.  Here are some examples:
 
-   var DeepTag = require('deeptag');
-   var maintemplate = `{{:~:options1:rows:item}}
+```var DeepTag = require('deeptag');
+var maintemplate = `{{:~:options1:rows:item}}
                  <div style="width:100%" >
                    <div style="float:left;width:80%;margin-left:0px" class="sugs" data-type="{{=item.type}}" data-val="{{=item.id}}">{{=item.name}}</div>
                    {{#def['subtemplate']}}
                  </div>
                  {{~:options1}}`
-                 
-  var subtemplate =   `{{:?:options:options.add:=:true}}
+
+var subtemplate = `{{:?:options:options.add:=:true}}
     <div style="float:left;width:45px">
       <i style="float:left" data-type="{{=item.type}}" data-val="{{=item.id}}" class="sugsadd icon-plus"></i>
       <i style="float:left" data-type="{{=item.type}}" data-val="{{=item.id}}" class="sugsdel icon-minus"></i>
@@ -25,39 +25,37 @@ The template format is similar but all functional tags such as conditionals and 
       <i style="float:left" data-type="{{=item.type}}" data-val="{{=item.id}}" class="sugsdel icon-minus"></i>
     </div>
     {{?:options2}}`
-    
-  tpls = [
-    {
-      name:  options1,
-      content:  maintemplate
-    },
-    {
-      name:  subtemplate,
-      content:  subtemplate
-    }
-  };
-  
-  var dt = new DeepTag(tpls);
-  
-  var items = [
-    {
-      id: 1,
-      type: "integer",
-      name:  "First"
-    },
-    {
-      id: 2,
-      type: "string",
-      name:  "Second"
-    }
-  ];
-  var opts = {
-    add: 'true',
-    remove: 'true'
-  };
-  var html = dt.render('options1', [items, opts]);
-  
-  ----
+
+tpls = [{
+    name: options1,
+    content: maintemplate
+  },
+  {
+    name: subtemplate,
+    content: subtemplate
+  }
+};
+
+var dt = new DeepTag(tpls);
+
+var items = [{
+    id: 1,
+    type: "integer",
+    name: "First"
+  },
+  {
+    id: 2,
+    type: "string",
+    name: "Second"
+  }
+];
+var opts = {
+  add: 'true',
+  remove: 'true'
+};
+var html = dt.render('options1', [items, opts]);
+
+```
   
   The conditionals are not complete. There currently is no "else" statement and only "if" conditionals.
   Rendering lists of about 20-50 items is in the sub milisecond range.
