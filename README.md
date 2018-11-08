@@ -1,4 +1,4 @@
-# deeptag
+# DeepTag
 Vanilla javascript templating system.  It utilizes nested/recursive taggs and arrays for real-time and fast templating.
 
 This is an attempt to create a similar system to Dot (https://github.com/olado/doT) but only does real-time client and server side rendering with similar speeds.
